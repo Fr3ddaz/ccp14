@@ -3,6 +3,7 @@ Package postfix;
 Helpers
  letter = ['a' .. 'z'];
  number = ['0' .. '9'];
+ operators = ('+' | '-' | '*' | '/');
 
 Tokens
  number = number+;
