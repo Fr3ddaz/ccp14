@@ -2,6 +2,9 @@
 ~
 *.class
 
+# SableCC Generated files #
+grammars/postfix/*
+
 # Package Files #
 *.jar
 *.war
