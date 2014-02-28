@@ -1,0 +1,46 @@
+class test {
+	public static void main(String[] args) {
+		// Two ints.
+		int one;
+		int two;
+		/*** Two Strings. ***/
+		String firstString;
+		String secondString;
+		this.array = new int[one];
+		this.array = new int[2];
+	}
+
+	/* Variable declarations */
+	int hejsan;
+	boolean d;
+	int[] array;
+
+	//Method declarations
+	public int method1 (String input) {
+		int hej;
+		int hejdå;
+		String line;
+		return hej;
+	}
+
+	public boolean method2 (boolean bool) {
+		if(bool) {
+			return bool;
+		} else {
+			return !bool;
+		}
+	}
+
+	public int loop() {
+		int looper = 0;
+		while (looper < 3) {
+			looper = looper + 1;
+		}
+	}
+
+	public boolean print() {
+		String line = "kamel";
+		System.out.println(line);
+		return true;
+	}
+}
