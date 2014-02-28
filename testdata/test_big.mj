@@ -18,7 +18,7 @@ class test {
 	//Method declarations
 	public int method1 (String input) {
 		int hej;
-		int hejdå;
+		int hejdau;
 		String line;
 		return hej;
 	}
@@ -39,7 +39,7 @@ class test {
 	}
 
 	public boolean print() {
-		String line = "kamel";
+		long line = 123456789L;
 		System.out.println(line);
 		return true;
 	}

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="ccp14" default="GenerateParser" basedir="."> 
+  <property name="RunningText" value="Running SableCC"/>
+	
+	<!-- - - - - - - - - - - - - - - - - - 
+          target: Main                      
+         - - - - - - - - - - - - - - - - - -->
+    <target name="Main">
+            
+    </target>
+
+  <target name="GenerateParser">
+    <echo>${RunningText}</echo>
+  	<java jar="lib/sablecc.jar" fork="true">
+  		<arg value="-d"></arg>
+  		<arg value="src"></arg>
+  		<arg value="grammars/CompilerGrammar.grammar"></arg>
+  	</java>
+  </target>
+</project>

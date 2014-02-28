@@ -11,7 +11,6 @@ Helpers
  slash = '/';
  
  l_comment = slash star;
- r_comment = star slash;
  general_comment = slash slash;
  
  line_feed = 0xa;
@@ -41,8 +40,7 @@ Tokens
  new = 'new';
  true = 'true';
  false = 'false';
- star_comment = l_comment star* (not_star_nor_slash not_star* star+)* r_comment;
- line_comment = general_comment character* line_terminator?;
+ 
 
  /*Data types*/
  
@@ -50,6 +48,7 @@ Tokens
  int = 'int';
  boolean = 'boolean';
  number = digit+;
+ temp = 'hejhej';
  
  /*Operators*/
  
@@ -59,20 +58,33 @@ Tokens
  mod = '%';
  and = '&&';
  less_than = '<';
+ logical_not = '!';
  
  /*Special symbols*/
  
  l_par = '(';
- r_par = ')';
- blank = (space | line_feed | carriage_return)+;
+ r_par = ')'; 
  l_bracket = '[';
  r_bracket = ']';
+ l_brace = 0x7b;
+ r_brace = 0x7d;
  dot = '.';
  comma = ',';
  semi_colon = ';';
  assign = '=';
 
-Ignored Tokens
- blank;
+ blank = (space | horizontal_tab | line_feed | carriage_return)*;
+ star_comment = l_comment star* (not_star_nor_slash not_star* star+)* '/';
+ line_comment = general_comment character* line_terminator?;
+
+ /*Identifiers & literals*/
+ identifier = letter (letter|digit)*;
+ int_literal = ('0' | ['1' .. '9'] digit*);
+ long_literal = ('0' ('l' | 'L') | ['1'..'9'] digit*);
  
+
+Ignored Tokens
+ blank, star_comment, line_comment;
+
 /* Productions */
+

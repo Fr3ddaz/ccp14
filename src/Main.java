@@ -10,8 +10,7 @@ import se.kth.badgers.lexparse.node.Token;
 
 public class Main {
 
-	/* ANTON */
-	public static void main(String[] args) {	
+	void lexerTest() {
 		FileReader fr = null;
 		Token t = null;
 		try {
@@ -22,16 +21,24 @@ public class Main {
 		}
 		Lexer l = new Lexer(new PushbackReader(fr));
 		
-		while (true) {
+		do {
 			try {
 				t = l.next();
+				System.out.println(t.getClass().toString().substring(35));
 			} catch (LexerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+				break;
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}			
-		}
+				break;
+			}
+			
+		} while (!(t instanceof se.kth.badgers.lexparse.node.EOF));
+	}
+	public static void main(String[] args) {
+		Main m = new Main();
+		m.lexerTest();
 	}
 }
