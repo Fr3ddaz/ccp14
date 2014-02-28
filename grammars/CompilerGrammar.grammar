@@ -78,7 +78,7 @@ Tokens
  line_comment = general_comment character* line_terminator?;
 
  /*Identifiers & literals*/
- identifier = letter (letter|digit)*;
+ id = letter (letter|digit)*;
  int_literal = ('0' | ['1' .. '9'] digit*);
  long_literal = ('0' ('l' | 'L') | ['1'..'9'] digit*);
  
@@ -86,5 +86,10 @@ Tokens
 Ignored Tokens
  blank, star_comment, line_comment;
 
-/* Productions */
+/*
+Productions
+	program {-> program} = main_class class_decl*
+	
+	main_class {-> main_class} = class [id]:id
 
+*/
