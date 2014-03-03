@@ -27,7 +27,7 @@ Tokens
 
  /*Key words*/
  
- class = 'class';
+ class_token = 'class';
  public = 'public';
  static = 'static';
  void = 'void';
@@ -41,14 +41,12 @@ Tokens
  true = 'true';
  false = 'false';
  
-
  /*Data types*/
  
  string = 'String';
  int = 'int';
  boolean = 'boolean';
  number = digit+;
- temp = 'hejhej';
  
  /*Operators*/
  
@@ -86,10 +84,63 @@ Tokens
 Ignored Tokens
  blank, star_comment, line_comment;
 
-/*
-Productions
-	program {-> program} = main_class class_decl*
-	
-	main_class {-> main_class} = class [id]:id
 
+Productions
+ program = main_class class_decl*;
+ main_class = class_token id l_brace main_method_decl main_method_body r_brace;
+ main_method_decl = public static void [main]:id l_par string l_bracket r_bracket [args]:id r_par;
+ main_method_body = l_brace var_decl* stmt* r_brace;
+ class_decl = class_token id l_brace var_decl* method_decl* r_brace;
+ var_decl = type id semi_colon;
+ method_decl = public type id l_par arg_list r_par l_brace var_decl* stmt* return expr semi_colon r_brace;
+ 
+ arg = type id;
+ arg_list = {single} arg | {sequence} arg_list_rest*;
+ arg_list_rest = comma arg;
+	
+ type = {int_array} int l_bracket r_bracket | {boolean} boolean |{int} int |{class} id;
+	
+ stmt = {body} l_brace stmt* r_brace 
+ |{if} if l_par expr r_par [then]:stmt else [else_body]:stmt 
+ |{while} while l_par expr r_par stmt
+ |{println} println l_par expr r_par semi_colon 
+ |{assign} id assign expr semi_colon 
+ |{array_assign} id l_bracket [index]:expr r_bracket assign [value]:expr semi_colon;
+	
+ expr = {op_expr} [left]:expr op [right]:expr 
+ |{array_deref} id l_bracket expr r_bracket 
+ |{array_length} expr dot [length]:id
+ |{method_call} expr dot id l_par expr_list r_par 
+ |{int_lit} int_literal 
+ |{true} true 
+ |{false} false 
+ |{variable} id
+ |{this} this 
+ |{new_int_array} new int l_bracket expr r_bracket 
+ |{new_expr} new id l_par r_par 
+ |{logical_not} logical_not expr
+ |{parens} l_par expr r_par;
+
+ op = {and} and 
+ |{less_than} less_than
+ |{plus} plus 
+ |{minus} minus 
+ |{mult} star;
+	
+ expr_list = {single} expr?
+ |{sequence} expr expr_rest*;
+ expr_rest =  comma expr;
+ 
+  
+
+/*
+Abstract Syntax Tree
+
+    grammar = exp* ;
+
+    exp = {plus}   [l]:exp [r]:exp
+    | {minus}  [l]:exp [r]:exp
+    | {mult}   [l]:exp [r]:exp
+    | {number} number
+    ;
 */
