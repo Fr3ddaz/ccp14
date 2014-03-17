@@ -1,4 +1,3 @@
-import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -10,35 +9,36 @@ import se.kth.badgers.lexparse.node.Token;
 
 public class Main {
 
+	public static void main(final String[] args) {
+		final Main m = new Main();
+		m.lexerTest();
+	}
+
 	void lexerTest() {
 		FileReader fr = null;
 		Token t = null;
 		try {
-			fr = new FileReader("./testdata/test_big.mj");
-		} catch (FileNotFoundException e) {
+			fr = new FileReader("./testdata/simpletest.mj");
+		} catch (final FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		Lexer l = new Lexer(new PushbackReader(fr));
-		
+		final Lexer l = new Lexer(new PushbackReader(fr));
+
 		do {
 			try {
 				t = l.next();
 				System.out.println(t.getClass().toString().substring(35));
-			} catch (LexerException e) {
+			} catch (final LexerException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				break;
-			} catch (IOException e) {
+			} catch (final IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				break;
 			}
-			
+
 		} while (!(t instanceof se.kth.badgers.lexparse.node.EOF));
-	}
-	public static void main(String[] args) {
-		Main m = new Main();
-		m.lexerTest();
 	}
 }

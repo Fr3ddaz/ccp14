@@ -201,79 +201,163 @@ public class AnalysisAdapter implements Analysis
     }
 
     @Override
-    public void caseAOpExprExpr(AOpExprExpr node)
+    public void caseAExprExpr(AExprExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAArrayDerefExpr(AArrayDerefExpr node)
+    public void caseAAndExprAndExpr(AAndExprAndExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAArrayLengthExpr(AArrayLengthExpr node)
+    public void caseAAndExprRestAndExprRest(AAndExprRestAndExprRest node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAMethodCallExpr(AMethodCallExpr node)
+    public void caseALessThanExprLessThanExpr(ALessThanExprLessThanExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAIntLitExpr(AIntLitExpr node)
+    public void caseALessThanExprRestLessThanExprRest(ALessThanExprRestLessThanExprRest node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseATrueExpr(ATrueExpr node)
+    public void caseAAdditiveExprAdditiveExpr(AAdditiveExprAdditiveExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAFalseExpr(AFalseExpr node)
+    public void caseAAdditiveExprRestAdditiveExprRest(AAdditiveExprRestAdditiveExprRest node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAVariableExpr(AVariableExpr node)
+    public void caseAAdditiveExprRest(AAdditiveExprRest node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAThisExpr(AThisExpr node)
+    public void caseAPlusExprPlusExpr(APlusExprPlusExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANewIntArrayExpr(ANewIntArrayExpr node)
+    public void caseAMinusExprMinusExpr(AMinusExprMinusExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseANewExprExpr(ANewExprExpr node)
+    public void caseATimesExprTimesExpr(ATimesExprTimesExpr node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseALogicalNotExpr(ALogicalNotExpr node)
+    public void caseATimesExprRestTimesExprRest(ATimesExprRestTimesExprRest node)
     {
         defaultCase(node);
     }
 
     @Override
-    public void caseAParensExpr(AParensExpr node)
+    public void caseAPrefixExprPrefixExpr(APrefixExprPrefixExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPrefixExpr(APrefixExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseANotExprNotExpr(ANotExprNotExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAPostfixExprPostfixExpr(APostfixExprPostfixExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAArrayDerefExprPostfixExprRest(AArrayDerefExprPostfixExprRest node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAMethodInvocationPostfixExprRest(AMethodInvocationPostfixExprRest node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAArrayLengthPostfixExprRest(AArrayLengthPostfixExprRest node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAIntLitPrimaryExpr(AIntLitPrimaryExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseATruePrimaryExpr(ATruePrimaryExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAFalsePrimaryExpr(AFalsePrimaryExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAVariablePrimaryExpr(AVariablePrimaryExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAThisPrimaryExpr(AThisPrimaryExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAParenPrimaryExpr(AParenPrimaryExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAArrayConstructPrimaryExpr(AArrayConstructPrimaryExpr node)
+    {
+        defaultCase(node);
+    }
+
+    @Override
+    public void caseAConstructPrimaryExpr(AConstructPrimaryExpr node)
     {
         defaultCase(node);
     }

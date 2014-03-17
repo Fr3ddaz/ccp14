@@ -1,0 +1,43 @@
+Buildfile: /home/aerholt/git/ccp14/build.xml
+
+GenerateParser:
+     [echo] Running SableCC
+     [java] 
+     [java] SableCC version 3.7
+     [java] Copyright (C) 1997-2012 Etienne M. Gagnon <egagnon@j-meg.com> and
+     [java] others.  All rights reserved.
+     [java] 
+     [java] This software comes with ABSOLUTELY NO WARRANTY.  This is free software,
+     [java] and you are welcome to redistribute it under certain conditions.
+     [java] 
+     [java] Type 'sablecc -license' to view
+     [java] the complete copyright notice and license.
+     [java] 
+     [java] 
+     [java]  -- Generating parser for CompilerGrammar.grammar in /home/aerholt/git/ccp14/src
+     [java] java.lang.RuntimeException: [96,83] PExpr and TExpr undefined.
+     [java] 	at org.sablecc.sablecc.ResolveIds.error2(ResolveIds.java:624)
+     [java] 	at org.sablecc.sablecc.ResolveIds.access$000(ResolveIds.java:17)
+     [java] 	at org.sablecc.sablecc.ResolveIds$1.caseAElem(ResolveIds.java:490)
+     [java] 	at org.sablecc.sablecc.node.AElem.apply(AElem.java:50)
+     [java] 	at org.sablecc.sablecc.ResolveIds$1.caseAAlt(ResolveIds.java:413)
+     [java] 	Adding productions and alternative of section AST.
+     [java] Verifying identifiers.
+     [java] at org.sablecc.sablecc.node.AAlt.apply(AAlt.java:46)
+     [java] 	at org.sablecc.sablecc.ResolveIds$1.caseAProd(ResolveIds.java:394)
+     [java] 	at org.sablecc.sablecc.node.AProd.apply(AProd.java:51)
+     [java] 	at org.sablecc.sablecc.analysis.DepthFirstAdapter.caseAProductions(DepthFirstAdapter.java:733)
+     [java] 	at org.sablecc.sablecc.node.AProductions.apply(AProductions.java:36)
+     [java] 	at org.sablecc.sablecc.ResolveIds.outAProductions(ResolveIds.java:382)
+     [java] 	at org.sablecc.sablecc.analysis.DepthFirstAdapter.caseAProductions(DepthFirstAdapter.java:736)
+     [java] 	at org.sablecc.sablecc.node.AProductions.apply(AProductions.java:36)
+     [java] 	at org.sablecc.sablecc.analysis.DepthFirstAdapter.caseAGrammar(DepthFirstAdapter.java:78)
+     [java] 	at org.sablecc.sablecc.node.AGrammar.apply(AGrammar.java:66)
+     [java] 	at org.sablecc.sablecc.analysis.DepthFirstAdapter.caseStart(DepthFirstAdapter.java:34)
+     [java] 	at org.sablecc.sablecc.node.Start.apply(Start.java:37)
+     [java] 	at org.sablecc.sablecc.SableCC.processGrammar(SableCC.java:222)
+     [java] 	at org.sablecc.sablecc.SableCC.processGrammar(SableCC.java:170)
+     [java] 	at org.sablecc.sablecc.SableCC.main(SableCC.java:136)
+
+BUILD SUCCESSFUL
+Total time: 1 second
