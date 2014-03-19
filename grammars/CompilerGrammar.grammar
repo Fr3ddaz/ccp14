@@ -151,11 +151,12 @@ Productions
  times_expr = {unary_expr} unary_expr
  |{times_expr} [left]:times_expr star [right]:unary_expr;
 
- unary_expr = {postfix_expr} postfix_expr
+ unary_expr = {primary_expression} primary_expression
  |{unary_expr} not_expr;
 
- not_expr = {not_expr} logical_not primary_expresion;
+ not_expr = {not_expr} logical_not primary_expression;
 
+ primary_expression = {variable} id;
 
 
   
