@@ -1,0 +1,98 @@
+Package se.kth.badgers.lexparse;
+
+Helpers
+
+ letter = (['A' .. 'Z'] | ['a' .. 'z']);
+ digit = ['0' .. '9'];
+ space = ' ';
+ horizontal_tab = 0x9;
+ 
+ star = '*';
+ slash = '/';
+ 
+ l_comment = slash star;
+ general_comment = slash slash;
+ 
+ line_feed = 0xa;
+ carriage_return = 0xd;
+ 
+ input_character = [0 .. 0x7f];
+ character = [input_character - [line_feed + carriage_return]];
+ not_star = [character - star];
+ not_star_nor_slash = [character - [star + slash]];
+
+ line_terminator = (line_feed | carriage_return | line_feed carriage_return);
+
+Tokens
+
+ /*Key words*/
+ 
+ class_token = 'class';
+ public = 'public';
+ static = 'static';
+ void = 'void';
+ return = 'return';
+ if = 'if';
+ else = 'else';
+ while = 'while';
+ println = 'System.out.println';
+ this = 'this';
+ new = 'new';
+ true = 'true';
+ false = 'false';
+ 
+ /*Data types*/
+ 
+ string = 'String';
+ int = 'int';
+ boolean = 'boolean';
+ number = digit+;
+ 
+ /*Operators*/
+ 
+ plus = '+';
+ minus = '-';
+ star = star;
+ mod = '%';
+ and = '&&';
+ less_than = '<';
+ logical_not = '!';
+ 
+ /*Special symbols*/
+ 
+ l_par = '(';
+ r_par = ')'; 
+ l_bracket = '[';
+ r_bracket = ']';
+ l_brace = 0x7b;
+ r_brace = 0x7d;
+ dot = '.';
+ comma = ',';
+ semi_colon = ';';
+ assign = '=';
+
+ blank = (space | horizontal_tab | line_feed | carriage_return)*;
+ star_comment = l_comment star* (not_star_nor_slash not_star* star+)* '/';
+ line_comment = general_comment character* line_terminator?;
+
+ /*Identifiers & literals*/
+ id = letter (letter|digit)*;
+ int_literal = ('0' | ['1' .. '9'] digit*);
+ long_literal = ('0' ('l' | 'L') | ['1'..'9'] digit*);
+ 
+
+Ignored Tokens
+ blank, star_comment, line_comment;
+
+
+Productions
+ expr = {mc} mc;
+
+ mc = {mc} expr dot l_par r_par |{len} len;
+
+ len = {len}expr dot id |{var} var;
+
+ var = {var} id;
+
+
+
