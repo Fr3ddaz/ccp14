@@ -124,58 +124,41 @@ Productions
  |{parens} l_par expr r_par;
 */
 
- expr = {expr} and_expr;
-
- and_expr = {and_expr} less_than_expr and_expr_rest*;
-
- and_expr_rest = {and_expr_rest} and less_than_expr;
-
- less_than_expr = {less_than_expr} additive_expr less_than_expr_rest*;
- 
- less_than_expr_rest = {less_than_expr_rest} less_than additive_expr;
-
- additive_expr = {additive_expr} times_expr additive_expr_rest*;
- additive_expr_rest = {additive_expr_rest} plus_expr | minus_expr;
-
- plus_expr = {plus_expr} plus times_expr;
- minus_expr = {minus_expr} minus times_expr;
-
- times_expr = {times_expr} prefix_expr times_expr_rest*;
- times_expr_rest = {times_expr_rest} star prefix_expr;
-
- prefix_expr = {prefix_expr} not_expr | postfix_expr;
-
- /*
-    TODO COUNT THE NOT:S!!! 
-    TODO .length
- */
- not_expr = {not_expr} logical_not postfix_expr;
-
- postfix_expr = {postfix_expr} primary_expr postfix_expr_rest*;
-
- postfix_expr_rest = {array_deref_expr} l_bracket expr r_bracket
- |{method_invocation} dot id l_par expr_list r_par 
- |{array_length} dot id; /* <<--- TODO */
-
- primary_expr = {int_lit} int_literal
- |{true} true 
- |{false} false 
- |{variable} id
- |{this} this
- |{paren} l_par expr r_par
- |{array_construct} new id l_bracket expr r_bracket
- |{construct} new id l_par expr_list r_par;
-
- op = {and} and 
- |{less_than} less_than
- |{plus} plus 
- |{minus} minus 
- |{mult} star;
-	
  expr_list = {single} expr?
  |{sequence} expr expr_rest*;
  expr_rest =  comma expr;
- 
+
+ expr = {and_expr} and_expr;
+
+/* TODO
+ or_expr = {and_expr} and_expr
+  | {or_expr} [left]:expr or [right]:expr;
+
+  .length
+*/
+
+ and_expr = {less_than_expr} less_than_expr
+ |{and_expr} [left]:and_expr and [right]:less_than_expr;
+
+ less_than_expr = {additive_expr} additive_expr
+ | {less_than_expr} [left]:less_than_expr less_than [right]:additive_expr;
+
+ additive_expr = {times_expr} times_expr
+ |{plus_expr} [left]:additive_expr plus [right]:times_expr
+ |{minus_expr} [left]:additive_expr minus [right]:times_expr;
+
+
+ times_expr = {unary_expr} unary_expr
+ |{times_expr} [left]:times_expr star [right]:unary_expr;
+
+ unary_expr = {primary_expression} primary_expression
+ |{unary_expr} not_expr;
+
+ not_expr = {not_expr} logical_not primary_expression;
+
+ primary_expression = {variable} id;
+
+
   
 
 /*

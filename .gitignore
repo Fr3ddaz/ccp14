@@ -3,7 +3,8 @@
 *.class
 
 # SableCC Generated files #
-grammars/postfix/*
+src/se/kth/badgers/lexparse/*
+src/se/kth/badgers/lexparse
 
 # Package Files #
 *.jar
