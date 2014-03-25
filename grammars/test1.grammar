@@ -86,13 +86,10 @@ Ignored Tokens
 
 
 Productions
- expr = {mc} mc;
-
- mc = {mc} expr dot l_par r_par |{len} len;
-
- len = {len}expr dot id |{var} var;
-
- var = {var} id;
+ program = main_class;
+ main_class = class_token id l_brace main_method_decl main_method_body r_brace;
+ main_method_decl = public static void [main]:id l_par string l_bracket r_bracket [args]:id r_par;
+ main_method_body = l_brace r_brace;
 
 
 

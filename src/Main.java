@@ -3,15 +3,20 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PushbackReader;
 
+import se.kth.badgers.lexparse.analysis.DepthFirstAdapter;
 import se.kth.badgers.lexparse.lexer.Lexer;
 import se.kth.badgers.lexparse.lexer.LexerException;
+import se.kth.badgers.lexparse.node.Start;
 import se.kth.badgers.lexparse.node.Token;
+import se.kth.badgers.lexparse.parser.Parser;
+import se.kth.badgers.lexparse.parser.ParserException;
 
 public class Main {
 
 	public static void main(final String[] args) {
 		final Main m = new Main();
-		m.lexerTest();
+//		m.lexerTest();
+		m.parserTest();
 	}
 
 	void lexerTest() {
@@ -40,5 +45,33 @@ public class Main {
 			}
 
 		} while (!(t instanceof se.kth.badgers.lexparse.node.EOF));
+	}
+	
+	void parserTest() {
+		FileReader fr = null;
+		try {
+			fr = new FileReader("./testdata/MainClassDecl");
+		} catch (final FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		final Lexer l = new Lexer(new PushbackReader(fr));
+		
+		Parser parser = new Parser(l);
+		
+		Start tree = null;
+		try {
+			tree = parser.parse();
+		} catch (ParserException | LexerException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+		}
+		tree.apply(new FormattedOutput());
+		
+//		 System.out.println("CSTTree.........\n" + tree.toString());
+				 
+		
+		
 	}
 }

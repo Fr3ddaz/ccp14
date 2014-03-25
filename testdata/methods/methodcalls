@@ -1,0 +1,7 @@
+
+a.b();
+a.b().c().d();
+a.length;
+a.b().length;
+a.b().c().d().length;
+
